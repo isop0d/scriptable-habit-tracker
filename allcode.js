@@ -89,6 +89,12 @@ function loadData() {
     console.log("Error loading data: " + e)
   }
 
+  const currentYear = new Date().getFullYear()
+  if (data.settings.year != currentYear){
+    data.year = currentYear
+    saveData(data)
+  }
+
   return data
 }
 
