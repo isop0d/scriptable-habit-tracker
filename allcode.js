@@ -89,11 +89,7 @@ function loadData() {
     console.log("Error loading data: " + e)
   }
 
-  const currentYear = new Date().getFullYear()
-  if (data.settings.year != currentYear){
-    data.year = currentYear
-    saveData(data)
-  }
+  
 
   return data
 }
@@ -359,6 +355,13 @@ function createWidget(data) {
 // MAIN EXECUTION
 async function run() {
   const data = loadData()
+
+const currentYear = new Date().getFullYear()
+  if (data.settings.year !== currentYear){
+    data.settings.year = currentYear
+    saveData(data)
+  }
+
   let widget = createWidget(data)
   let settingsChanged = false
 
